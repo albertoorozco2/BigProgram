@@ -52,7 +52,7 @@ public class DepotBuilder {
     }
     
     public Depot getNewDepot(Integer name, String type){
-        BuildDepot ( name, type);
+        BuildDepot (name, type);
         return depot;
     }
   

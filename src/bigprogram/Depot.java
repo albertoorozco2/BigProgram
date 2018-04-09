@@ -62,9 +62,9 @@ public class Depot {
     this.stockItself.sellStock();
     this.allowance.setSales(sales);      
     this.allowance.setDeliverSales(deliverySales);
-            System.out.printf("Depot%s%03d sales %s from Depot%s%03d Sale %2d Delivery Sale %2d, Total %2d",
-                            this.stockItself.getStockType(), this.name, this.stockItself.getStockType(),  type, name, sales, deliverySales, (sales+deliverySales));
-            System.out.println();
+    //         System.out.printf("Depot%s%03d sales %s from Depot%s%03d Sale %2d Delivery Sale %2d, Total %2d",
+    //                        this.stockItself.getStockType(), this.name, this.stockItself.getStockType(),  type, name, sales, deliverySales, (sales+deliverySales));
+    //        System.out.println();
 
     }
     
@@ -99,16 +99,15 @@ public class Depot {
             allowance.setPurchases(purchase);
             allowance.setDeliverPurchases(deliveryPurchase);
         }
-        System.out.printf("Depot%s%03d purchase %s from Depot%s%03d Purchase %2d Delivery Purchase %2d, Total %2d",
-                            this.stockItself.getStockType(), this.name, type, type, nameDepot, purchase, deliveryPurchase, (purchase+deliveryPurchase));
-        System.out.println();
+       // System.out.printf("Depot%s%03d purchase %s from Depot%s%03d Purchase %2d Delivery Purchase %2d, Total %2d",
+       //                     this.stockItself.getStockType(), this.name, type, type, nameDepot, purchase, deliveryPurchase, (purchase+deliveryPurchase));
+       // System.out.println();
     }
     
     public void TradeInformation(){
-    
-        System.out.printf("Depot%s%03d sales %4d deliverysales %4d unit sold %4d purchase %4d deliverypurchase %4d ",
-                            this.stockItself.getStockType(), this.name, allowance.getSales(),  allowance.getDeliverSales(), stockItself.getUnitSold(),  allowance.getPurchases(),  allowance.getDeliverPurchases());
-        System.out.println();
+        System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType()+this.name, allowance.getSales(), allowance.getDeliverSales(), stockItself.getUnitSold(), allowance.getPurchases(),  allowance.getDeliverPurchases());
+           System.out.println();
+
     
     }
     

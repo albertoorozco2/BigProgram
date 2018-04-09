@@ -33,7 +33,9 @@ public class DepotIterator implements Iterator<Depot> {
     public Depot next() {
         return depots[pos++];
     }
-    
+    public void first() {
+         pos = 0;
+    }
    
 
 }
