@@ -60,13 +60,11 @@ public class Depot {
      //       System.out.println("stock deliverySales : " +deliverySales+" sales: "+sales );
 
     this.stockItself.sellStock();
-
-    this.allowance.setSales(sales);
-            
+    this.allowance.setSales(sales);      
     this.allowance.setDeliverSales(deliverySales);
             System.out.printf("Depot%s%03d sales %s from Depot%s%03d Sale %2d Delivery Sale %2d, Total %2d",
                             this.stockItself.getStockType(), this.name, this.stockItself.getStockType(),  type, name, sales, deliverySales, (sales+deliverySales));
-
+            System.out.println();
 
     }
     
@@ -86,11 +84,17 @@ public class Depot {
     }
 
     public void Buy(Integer nameDepot, String type, Integer purchase, Integer deliveryPurchase){
-        if(stockOther.stockType.equals(type)){
+  //            System.out.println(type+" "+stockOther.getStockType());
+  //            System.out.println(type+" "+stockAnother.getStockType());
+
+  //      System.out.println(type.equals(stockOther.getStockType()));
+  //     System.out.println(type == stockAnother.getStockType());
+        
+       if(type.equals(stockOther.getStockType())){
             stockOther.buyStock();
             allowance.setPurchases(purchase);
             allowance.setDeliverPurchases(deliveryPurchase);
-        }else if(stockAnother.stockType.equals(type)) {
+        }else if(type.equals(stockAnother.getStockType())) {
             stockAnother.buyStock();
             allowance.setPurchases(purchase);
             allowance.setDeliverPurchases(deliveryPurchase);

@@ -23,6 +23,7 @@ public class DepotBuilder {
 
     }
     public void BuildDepot (Integer name, String type){
+    //    System.out.println(type);
           depot = new Depot();   
      switch (type) {
             case "A":  this.stockItself = new Stock("A", (rand.nextInt(50) + 15));
@@ -50,7 +51,8 @@ public class DepotBuilder {
      this.depot.setAllowance(this.allowance);
     }
     
-    public Depot getDepot(){
+    public Depot getNewDepot(Integer name, String type){
+        BuildDepot ( name, type);
         return depot;
     }
   

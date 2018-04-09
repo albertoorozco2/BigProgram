@@ -59,8 +59,8 @@ public class Allowance {
         return purchases;
     }
 
-    public void setPurchases(Integer Purchases) {
-        this.purchases = this.purchases+Purchases;
+    public void setPurchases(Integer purchases) {
+        this.purchases = this.purchases+purchases;
     //    System.out.println("puchase new = "+this.purchases);
 
     }
