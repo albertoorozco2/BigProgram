@@ -18,8 +18,10 @@ public class Company {
     public DepotBuilder depotBuilder = new DepotBuilder();
     public DepotStorage storage = new DepotStorage();
     public DepotIterator iterator;
+    public String companyType;
     
     public Company(String type) {
+        this.companyType = type;
         for(int i =1; i<101; i++){
          storage.addDepot(depotBuilder.getNewDepot(i, type));
         }
@@ -63,7 +65,9 @@ public class Company {
     public Integer Made(){
     return totalSales+totalDeliverySales;
     }
-   
+    public String CompanyType(){
+    return companyType;
+    }
     public DepotIterator getIterator(){
     return this.iterator;
     }

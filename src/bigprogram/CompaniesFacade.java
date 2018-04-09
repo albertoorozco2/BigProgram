@@ -12,8 +12,6 @@ import java.util.Random;
  */
 public class CompaniesFacade{
 
-    Integer transactionNum = 0;
-    Integer TryingNum = 0;
     Company companyA;
     Company companyB;
     Company companyC;
@@ -86,11 +84,18 @@ public class CompaniesFacade{
           companyC.profitAndLost("C");
         System.out.println("-------------------------------------------------------------------------------");
 
-          
+          Integer mostSpent = companyA.Spent();
+          Company mostSpentCompany=companyA;
+          if(mostSpent<companyB.Spent()){mostSpent=companyB.Spent(); mostSpentCompany=companyB;}
+          if(mostSpent<companyC.Spent()){mostSpent=companyC.Spent(); mostSpentCompany=companyC;}
+          System.out.println("Company spent the most: Big "+mostSpentCompany.CompanyType()+" Total Spent : "+mostSpentCompany.Spent() );
 
-      
-        
-        
+          Integer mostMade = companyA.Spent();
+          Company mostMadeCompany=companyA;
+          if(mostMade<companyB.Made()){mostMade=companyB.Spent(); mostMadeCompany=companyB;}
+          if(mostMade<companyC.Made()){mostMade=companyC.Spent(); mostMadeCompany=companyC;}
+          System.out.println("Company made the most: Big "+mostMadeCompany.CompanyType()+" Total Made : "+mostMadeCompany.Made() );  
+          System.out.print("\n\n\n\n");
     }
     
    public void Transactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam){
