@@ -11,11 +11,11 @@ package bigprogram;
  */
 public class Depot {
 
-    public Integer name = null;
-    public Stock stockItself = null;
-    public Stock stockOther  = null;
-    public Stock stockAnother = null;
-    public Allowance allowance  =null;
+    private Integer name = null;
+    Stock stockItself = null;
+    private Stock stockOther  = null;
+    private Stock stockAnother = null;
+    Allowance allowance  =null;
     
     public Depot() {
   
@@ -49,7 +49,7 @@ public class Depot {
         return this.name;
     }
     
-    public Boolean PossibleSell(){
+    public Boolean PossibleToSell(){
      //       System.out.println("posible sel = " +this.stockItself.stockAmount );
      //      System.out.println("posible sel = " +(this.stockItself.stockAmount>15) );
 
@@ -68,7 +68,7 @@ public class Depot {
 
     }
     
-    public Boolean PossibleBuy(String type, Integer amount){
+    public Boolean PossibleToBuy(String type, Integer amount){
          Boolean test = null;
     if((this.allowance.getAllowance()-50)>= amount){
         if(this.stockOther.stockType.equals(type)){
@@ -104,7 +104,7 @@ public class Depot {
        // System.out.println();
     }
     
-    public void TradeInformation(){
+    public void TradeInformationPrint(){
         System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType()+this.name, allowance.getSales(), allowance.getDeliverSales(), stockItself.getUnitSold(), allowance.getPurchases(),  allowance.getDeliverPurchases());
            System.out.println();
 

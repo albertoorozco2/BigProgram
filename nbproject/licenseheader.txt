@@ -1,0 +1,9 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Object Orientation with Design Patterns
+${licensePrefix}Continuous Assessment 
+${licensePrefix}Commercial Trading
+<#if licenseLast??>
+${licenseLast}
+</#if>

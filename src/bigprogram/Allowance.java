@@ -11,11 +11,11 @@ package bigprogram;
  */
 public class Allowance {
 
-    public Integer initialAllowance = 0;
-    public Integer sales = 0;
-    public Integer deliverSales = 0;
-    public Integer purchases = 0;
-    public Integer deliverPurchases = 0;
+    private Integer initialAllowance = 0;
+    private Integer sales = 0;
+    private Integer deliverSales = 0;
+    private Integer purchases = 0;
+    private Integer deliverPurchases = 0;
     
     public Allowance(Integer allowance) {
         this.initialAllowance = allowance;

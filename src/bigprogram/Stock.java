@@ -10,9 +10,9 @@ package bigprogram;
  * @author A1
  */
 public class Stock {
-    public String stockType = null;
-    public Integer stockAmount = 0;
-    public Integer stockInitial = 0;
+    String stockType = null;
+    Integer stockAmount = 0;
+    private Integer stockInitial = 0;
     
     public Stock(String stockType, Integer stockAmount ) {
         this.stockType = stockType;

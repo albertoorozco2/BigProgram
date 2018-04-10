@@ -11,12 +11,12 @@ import java.util.Random;
  */
 public class DepotBuilder {
 
-    public Integer name = null;
-    public Stock stockItself = null;
-    public Stock stockOther  = null;
-    public Stock stockAnother = null;
-    public Allowance allowance  =null;
-    public Depot depot = null;
+    private Integer name = null;
+    private Stock stockItself = null;
+    private Stock stockOther  = null;
+    private Stock stockAnother = null;
+    private Allowance allowance  =null;
+    private Depot depot = null;
     Random rand = new Random();
     
     public DepotBuilder() {

@@ -11,14 +11,14 @@ package bigprogram;
  */
 public class Company {
     
-    public Integer totalSales = 0;
-    public Integer totalDeliverySales = 0;
-    public Integer totalPurchases =0;
-    public Integer totalDeliveryPurchases=0;
-    public DepotBuilder depotBuilder = new DepotBuilder();
-    public DepotStorage storage = new DepotStorage();
-    public DepotIterator iterator;
-    public String companyType;
+    private Integer totalSales = 0;
+    private Integer totalDeliverySales = 0;
+    private Integer totalPurchases =0;
+    private Integer totalDeliveryPurchases=0;
+    private DepotBuilder depotBuilder = new DepotBuilder();
+    private DepotStorage storage = new DepotStorage();
+    private DepotIterator iterator;
+    private String companyType;
     
     public Company(String type) {
         this.companyType = type;
@@ -49,7 +49,7 @@ public class Company {
             this.totalDeliverySales += one.allowance.getDeliverSales();
             this.totalPurchases += one.allowance.getPurchases();
             this.totalDeliveryPurchases += one.allowance.getDeliverPurchases();
-            if(print==true){one.TradeInformation();}
+            if(print==true){one.TradeInformationPrint();}
         }
     
     }
