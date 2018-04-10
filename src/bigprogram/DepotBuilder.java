@@ -22,7 +22,8 @@ public class DepotBuilder {
     public DepotBuilder() {
 
     }
-    public void BuildDepot (Integer name, String type){
+    
+    public void buildDepot (Integer name, String type){
     //    System.out.println(type);
           depot = new Depot();   
      switch (type) {
@@ -52,7 +53,7 @@ public class DepotBuilder {
     }
     
     public Depot getNewDepot(Integer name, String type){
-        BuildDepot (name, type);
+        buildDepot (name, type);
         return depot;
     }
   

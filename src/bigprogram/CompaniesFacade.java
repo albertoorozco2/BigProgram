@@ -33,53 +33,54 @@ public class CompaniesFacade {
 
     }
 
-    public void Treading(String userType) {
+    public void treading(String userType) {
 
         this.userType = userType;
 
-        iteratorA = companyA.getIterator();
-        iteratorB = companyB.getIterator();
-        iteratorC = companyC.getIterator();
-        console.TransactionCompletedHeader(userType);
-        Transactions(iteratorA, iteratorB);
-        Transactions(iteratorA, iteratorC);
-        Transactions(iteratorB, iteratorC);
-        console.TradeInformationHeader(userType);
+        iteratorA = companyA.getDepotIterator();
+        iteratorB = companyB.getDepotIterator();
+        iteratorC = companyC.getDepotIterator();
+        console.transactionsCompletedHeader(userType);
+        transactions(iteratorA, iteratorB);
+        transactions(iteratorC, iteratorB);
+        transactions(iteratorC, iteratorA);
+        console.tradeInformationHeader(userType);
         companyA.tradeInformationByDepot(userType.equals("A"));
         companyB.tradeInformationByDepot(userType.equals("B"));
         companyC.tradeInformationByDepot(userType.equals("C"));
-        console.ProfitAndLossHeader();
+        console.horizontalLine();
+
+        console.profitAndLossHeader();
         companyA.profitAndLost("A");
         companyB.profitAndLost("B");
         companyC.profitAndLost("C");
-        System.out.println("-------------------------------------------------------------------------------");
-
-        Integer mostSpent = companyA.Spent();
+        console.horizontalLine();
+        Integer mostSpent = companyA.spent();
         Company mostSpentCompany = companyA;
-        if (mostSpent < companyB.Spent()) {
-            mostSpent = companyB.Spent();
+        if (mostSpent < companyB.spent()) {
+            mostSpent = companyB.spent();
             mostSpentCompany = companyB;
         }
-        if (mostSpent < companyC.Spent()) {
-            mostSpent = companyC.Spent();
+        if (mostSpent < companyC.spent()) {
+            mostSpent = companyC.spent();
             mostSpentCompany = companyC;
         }
-        System.out.println("Company spent the most: Big " + mostSpentCompany.CompanyType() + " Total Spent : " + mostSpentCompany.Spent());
-
-        Integer mostMade = companyA.Spent();
+        System.out.printf("Company spent the most: Big-%1s Total Spent: $ %,6d \n", mostSpentCompany.getCompanyType(), mostSpentCompany.spent());
+        
+        Integer mostMade = companyA.made();
         Company mostMadeCompany = companyA;
-        if (mostMade < companyB.Made()) {
-            mostMade = companyB.Spent();
+        if (mostMade < companyB.made()) {
+            mostMade = companyB.made();
             mostMadeCompany = companyB;
         }
-        if (mostMade < companyC.Made()) {
-            mostMade = companyC.Spent();
+        if (mostMade < companyC.made()) {
+            mostMade = companyC.made();
             mostMadeCompany = companyC;
         }
-        System.out.println("Company made the most: Big " + mostMadeCompany.CompanyType() + " Total Made : " + mostMadeCompany.Made());
+        System.out.printf("Company made  the most: Big-%1s Total  Made: $ %,6d \n", mostMadeCompany.getCompanyType(), mostMadeCompany.made());
     }
 
-    public void Transactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam) {
+    public void transactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam) {
         DepotIterator iteratorOne = iteratorOneParam;
         DepotIterator iteratorTwo = iteratorTwoParam;
 
@@ -105,24 +106,24 @@ public class CompaniesFacade {
                 sellDeliveryTwo = rand.nextInt(10) + 1;
                 typeTwo = depotTwo.stockItself.getStockType();
                 //               System.out.println(TryingNum++);
-                if (depotOne.PossibleToSell() == true && depotTwo.PossibleToBuy(depotOne.stockItself.getStockType(), (sellOne + sellDeliveryOne)) == true) {
+                if (depotOne.possibleToSell() == true && depotTwo.possibleToBuy(depotOne.stockItself.getStockType(), (sellOne + sellDeliveryOne)) == true) {
                     // System.out.println(transactionNum++);
-                    depotOne.Sell(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellOne, sellDeliveryOne);
-                    depotTwo.Buy(depotOne.getName(), depotOne.stockItself.getStockType(), sellOne, sellDeliveryOne);
+                    depotOne.sell(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellOne, sellDeliveryOne);
+                    depotTwo.buy(depotOne.getName(), depotOne.stockItself.getStockType(), sellOne, sellDeliveryOne);
                     if (this.userType.equals(typeOne) || this.userType.equals(typeTwo)) {
 
-                        System.out.printf("  Depot  %s%03d  Sales  %s  to    Depot  %s%03d   Sale:%2d   Delivery:%2d   Total:%2d",
+                        System.out.printf("|  Depot  %s%03d  Sales  %s  to    Depot  %s%03d   Sale:%2d   Delivery:%2d   Total:%2d  |",
                                 typeOne, depotOne.getName(), typeOne, typeTwo, depotTwo.getName(), sellOne, sellDeliveryOne, (sellOne + sellDeliveryOne));
                         System.out.println();
 
                     }
 
-                } else if (depotTwo.PossibleToSell() == true && depotOne.PossibleToBuy(depotTwo.stockItself.getStockType(), (sellTwo + sellDeliveryTwo)) == true) {
+                } else if (depotTwo.possibleToSell() == true && depotOne.possibleToBuy(depotTwo.stockItself.getStockType(), (sellTwo + sellDeliveryTwo)) == true) {
                     // System.out.println(transactionNum++);
-                    depotTwo.Sell(depotOne.getName(), depotOne.stockItself.getStockType(), sellTwo, sellDeliveryTwo);
-                    depotOne.Buy(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellTwo, sellDeliveryTwo);
+                    depotTwo.sell(depotOne.getName(), depotOne.stockItself.getStockType(), sellTwo, sellDeliveryTwo);
+                    depotOne.buy(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellTwo, sellDeliveryTwo);
                     if (this.userType.equals(typeTwo) || this.userType.equals(typeOne)) {
-                        System.out.printf("  Depot  %s%03d  Buys   %s  from  Depot  %s%03d    Buy:%2d   Delivery:%2d   Total:%2d",
+                        System.out.printf("|  Depot  %s%03d  Buys   %s  from  Depot  %s%03d    Buy:%2d   Delivery:%2d   Total:%2d  |",
                                 typeOne, depotOne.getName(), typeTwo, typeTwo, depotTwo.getName(), sellOne, sellDeliveryOne, (sellOne + sellDeliveryOne));
                         System.out.println();
 
@@ -133,7 +134,6 @@ public class CompaniesFacade {
             iteratorTwo.first();
         }
         iteratorOne.first();
-
     }
 
 }

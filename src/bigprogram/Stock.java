@@ -10,43 +10,44 @@ package bigprogram;
  * @author A1
  */
 public class Stock {
-    String stockType = null;
-    Integer stockAmount = 0;
+
+    private String stockType = null;
+    private Integer stockAmount = 0;
     private Integer stockInitial = 0;
-    
-    public Stock(String stockType, Integer stockAmount ) {
+
+    public Stock(String stockType, Integer stockAmount) {
         this.stockType = stockType;
         this.stockAmount = stockAmount;
         this.stockInitial = stockAmount;
-      //  System.out.println("Stocktype = " +stockType+"   stockamount= "+ stockAmount );
-        
+        //  System.out.println("Stocktype = " +stockType+"   stockamount= "+ stockAmount );
+
     }
-  
+
     public String getStockType() {
-      //  System.out.println("Stocktype -" +this.stockType );
+        //  System.out.println("Stocktype -" +this.stockType );
 
         return this.stockType;
     }
 
     public Integer getStockAmount() {
-       // System.out.println("stockAmount -" +this.stockAmount );
+        // System.out.println("stockAmount -" +this.stockAmount );
 
         return this.stockAmount;
     }
-    
+
     public Integer getUnitSold() {
-    //   System.out.println("getUnitSold -" + (this.stockInitial - this.stockAmount) );
+        //   System.out.println("getUnitSold -" + (this.stockInitial - this.stockAmount) );
         return this.stockInitial - this.stockAmount;
     }
-    
+
     public void sellStock() {
-        this.stockAmount = this.stockAmount-1;
-    //System.out.println("stockAmount : " +this.stockAmount );
+        this.stockAmount = this.stockAmount - 1;
+        //System.out.println("stockAmount : " +this.stockAmount );
     }
-    
+
     public void buyStock() {
-        this.stockAmount = this.stockAmount+1;
-   // System.out.println("stockAmount -" +this.stockAmount );
+        this.stockAmount = this.stockAmount + 1;
+        // System.out.println("stockAmount -" +this.stockAmount );
 
     }
 }

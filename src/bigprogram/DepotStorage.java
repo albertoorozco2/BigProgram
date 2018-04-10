@@ -14,14 +14,16 @@ package bigprogram;
 public class DepotStorage {
     private Depot []depots = new Depot[100];
     private int index = 0;
+    
     public void addDepot(Depot depot){
  //       System.out.println(depot);
 //        System.out.println(index);
         depots[index] = depot;
         index++;
     }
+    
     public Depot[] getDepots(){
         return depots;
 }
-    
+
 }

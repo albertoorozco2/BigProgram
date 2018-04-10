@@ -20,8 +20,8 @@ public class Main {
         Boolean run = true;
         do{
         CompaniesFacade = new CompaniesFacade();
-        CompaniesFacade.Treading(console.WelcomeMessage());
-        run = console.ReturnToMain();
+        CompaniesFacade.treading(console.welcomeMessage());
+        run = console.returnToMain();
         }while(run==true);
             
     }
