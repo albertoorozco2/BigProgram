@@ -11,7 +11,7 @@ package bigprogram;
  */
 public class Allowance {
 
-    private Integer initialAllowance = 0;
+    public Integer initialAllowance = 0;
     private Integer sales = 0;
     private Integer deliverSales = 0;
     private Integer purchases = 0;

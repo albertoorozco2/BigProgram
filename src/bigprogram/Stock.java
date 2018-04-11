@@ -13,12 +13,13 @@ public class Stock {
 
     private String stockType = null;
     private Integer stockAmount = 0;
-    private Integer stockInitial = 0;
+    public Integer stockInitial = 0;
 
     public Stock(String stockType, Integer stockAmount) {
         this.stockType = stockType;
         this.stockAmount = stockAmount;
         this.stockInitial = stockAmount;
+    //    System.out.println(stockInitial);
         //  System.out.println("Stocktype = " +stockType+"   stockamount= "+ stockAmount );
 
     }

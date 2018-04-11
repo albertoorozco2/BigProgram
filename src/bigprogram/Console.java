@@ -25,32 +25,35 @@ public class Console {
                          +"   WELCOME TO THE THREE BIG'S PROGRAM.\n\n"
                         + " This program allows you to Trade between companies.\n"
                         + "Select which company would you like to trade as:\n\n"
-                        + "         A -> Company BigA\n"
-                        + "         B -> Company BigB\n"
-                        + "         C -> Company BigC\n"
-                        + "       Any -> Trade autonomously\n\n"
+                        + "               A -> Company BigA\n"
+                        + "               B -> Company BigB\n"
+                        + "               C -> Company BigC\n"
+                        + "   Any other key -> Trade autonomously\n\n"
                         + "Type your selection: ");
 
         String companySelection = sc.nextLine().toUpperCase().trim();
         if (companySelection.equals("A") || companySelection.equals("B") || companySelection.equals("C")) {
             System.out.println("You have selected to start trading as Big " + companySelection + "\n");
         } else {
-            System.out.println("You have selected to start trading autonomously \n"
-                    + "You have been assign to trade as BigB");
-            companySelection = "B";
+            System.out.println("You have selected to start trading autonomously \n");
+            companySelection = "";
         }
         return companySelection;
     }
 
     public void transactionsCompletedHeader(String userType) {
+         if(!userType.equals("")){
         System.out.println("\n\nTRANSACTIONS COMPLETED BY BIG " + userType + "\n");
         horizontalLine();
         System.out.printf("| %10s | %10s | %10s | %10s | %10s | %10s |", "Depot", "Transaction", "to", "Sale/Buy", "Delivery", "Total");
         System.out.println();
         horizontalLine();
+        }
     }
 
     public void tradeInformationHeader(String userType) {
+        
+        if(!userType.equals("")){
         horizontalLine();
 
         System.out.print("\n\n\nTRADE INFORMATION BY DEPOT " + userType + "\n");
@@ -60,6 +63,7 @@ public class Console {
         System.out.printf("| %10s | %10s | %10s | %10s | %10s | %10s |", "NAME", "", "SALES", "SOLD", "", "PURCHASES");
         System.out.println();
         horizontalLine();
+        }
     }
 
     public void profitAndLossHeader() {

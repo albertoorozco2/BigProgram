@@ -25,7 +25,7 @@ public class Company {
         for (int i = 1; i < 101; i++) {
             storage.addDepot(depotBuilder.getNewDepot(i, type));
         }
-//        System.out.println(type+"completed");
+    //    System.out.println(type+"completed");
         iterator = new DepotIterator(storage.getDepots());
 //        System.out.println(type+"completed");
 

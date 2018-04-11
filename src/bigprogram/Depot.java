@@ -18,7 +18,6 @@ public class Depot {
     Allowance allowance = null;
 
     public Depot() {
-
     }
 
     public void setStockItself(Stock stockItself) {
@@ -48,7 +47,7 @@ public class Depot {
     }
 
     public Boolean possibleToSell() {
-        //       System.out.println("posible sel = " +this.stockItself.stockAmount );
+//               System.out.println("posible sel = " +this.stockItself.getStockAmount() );
         //      System.out.println("posible sel = " +(this.stockItself.stockAmount>15) );
 
         return this.stockItself.getStockAmount() > 15;
@@ -104,7 +103,19 @@ public class Depot {
     public void tradeInformationPrint() {
         System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType() + this.name, allowance.getSales(), allowance.getDeliverSales(), stockItself.getUnitSold(), allowance.getPurchases(), allowance.getDeliverPurchases());
         System.out.println();
-
+  //      System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType() + this.name, 0, 0, stockItself.stockInitial, this.stockAnother.getStockAmount(), this.stockOther.getStockAmount());
+  //
+//        System.out.println(" Iallowance>"+ allowance.initialAllowance +
+//                            " Falowance>"+allowance.getAllowance()+
+//                            " Istocki>"+ stockItself.stockInitial+
+//                            " FStocki>"+stockItself.getStockAmount()+
+//                            " IStockO>"+stockOther.stockInitial+
+//                            " FStockO>"+stockOther.getStockAmount()+
+//                            " IStockA>"+stockAnother.stockInitial+
+//                            " FStockA>"+stockAnother.getStockAmount()
+//                );
+          
+                   
     }
 
 }

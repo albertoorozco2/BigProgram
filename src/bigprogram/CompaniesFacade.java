@@ -20,6 +20,7 @@ public class CompaniesFacade {
     private DepotIterator iteratorB;
     private DepotIterator iteratorC;
     private String userType;
+    public Integer TryingNum = 0;
 //    DepotIterator iteratorA = companyA.getIterator();
 //    DepotIterator iteratorB = companyB.getIterator();
 //    DepotIterator iteratorC = companyC.getIterator();
@@ -41,9 +42,9 @@ public class CompaniesFacade {
         iteratorB = companyB.getDepotIterator();
         iteratorC = companyC.getDepotIterator();
         console.transactionsCompletedHeader(userType);
-        transactions(iteratorA, iteratorB);
-        transactions(iteratorC, iteratorB);
-        transactions(iteratorC, iteratorA);
+        
+        performTransactions(iteratorA, iteratorB, iteratorC);
+
         console.tradeInformationHeader(userType);
         companyA.tradeInformationByDepot(userType.equals("A"));
         companyB.tradeInformationByDepot(userType.equals("B"));
@@ -80,7 +81,29 @@ public class CompaniesFacade {
         System.out.printf("Company made  the most: Big-%1s Total  Made: $ %,6d \n", mostMadeCompany.getCompanyType(), mostMadeCompany.made());
     }
 
-    public void transactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam) {
+    
+    public void performTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam,  DepotIterator iteratorThreeParam){
+        DepotIterator iterator1 = iteratorOneParam;
+        DepotIterator iterator2 = iteratorTwoParam; 
+        DepotIterator iterator3 = iteratorThreeParam; 
+        
+        sellFirstTransactions(iterator1, iterator2);
+        buyFirstTransactions(iterator1, iterator2);
+        sellFirstTransactions(iterator2, iterator3);
+        buyFirstTransactions(iterator2, iterator3);
+        sellFirstTransactions(iterator1, iterator3);
+        buyFirstTransactions(iterator1, iterator3);
+        sellFirstTransactions(iterator3, iterator1);
+        buyFirstTransactions(iterator3, iterator1);
+        sellFirstTransactions(iterator3, iterator2);
+        buyFirstTransactions(iterator3, iterator2);
+        sellFirstTransactions(iterator2, iterator1);
+        buyFirstTransactions(iterator2, iterator1);
+        
+    }
+    
+    
+    public void sellFirstTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam) {
         DepotIterator iteratorOne = iteratorOneParam;
         DepotIterator iteratorTwo = iteratorTwoParam;
 
@@ -105,7 +128,7 @@ public class CompaniesFacade {
                 sellTwo = rand.nextInt(10) + 1;
                 sellDeliveryTwo = rand.nextInt(10) + 1;
                 typeTwo = depotTwo.stockItself.getStockType();
-                //               System.out.println(TryingNum++);
+               //                System.out.println(TryingNum++);
                 if (depotOne.possibleToSell() == true && depotTwo.possibleToBuy(depotOne.stockItself.getStockType(), (sellOne + sellDeliveryOne)) == true) {
                     // System.out.println(transactionNum++);
                     depotOne.sell(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellOne, sellDeliveryOne);
@@ -129,6 +152,63 @@ public class CompaniesFacade {
 
                     }
                 }
+
+            }
+            iteratorTwo.first();
+        }
+        iteratorOne.first();
+    }
+public void buyFirstTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam) {
+        DepotIterator iteratorOne = iteratorOneParam;
+        DepotIterator iteratorTwo = iteratorTwoParam;
+
+        Depot depotOne;
+        String typeOne;
+        Integer sellOne;
+        Integer sellDeliveryOne;
+        Depot depotTwo;
+        String typeTwo;
+        Integer sellTwo;
+        Integer sellDeliveryTwo;
+        Integer count = 0;
+
+        for (int i = 0; i < 100; i++) {
+            depotOne = iteratorOne.next();
+            typeOne = depotOne.stockItself.getStockType();
+
+            for (int j = 0; j < 100; j++) {
+                depotTwo = iteratorTwo.next();
+                sellOne = rand.nextInt(10) + 1;
+                sellDeliveryOne = rand.nextInt(10) + 1;
+                sellTwo = rand.nextInt(10) + 1;
+                sellDeliveryTwo = rand.nextInt(10) + 1;
+                typeTwo = depotTwo.stockItself.getStockType();
+                 //              System.out.println(TryingNum++);
+                
+                               
+                if (depotOne.possibleToSell() == true && depotTwo.possibleToBuy(depotOne.stockItself.getStockType(), (sellOne + sellDeliveryOne)) == true) {
+                    // System.out.println(transactionNum++);
+                    depotOne.sell(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellOne, sellDeliveryOne);
+                    depotTwo.buy(depotOne.getName(), depotOne.stockItself.getStockType(), sellOne, sellDeliveryOne);
+                    if (this.userType.equals(typeOne) || this.userType.equals(typeTwo)) {
+                        System.out.printf("|  Depot  %s%03d  Buys   %s  from  Depot  %s%03d    Buy:%2d   Delivery:%2d   Total:%2d  |",
+                                typeTwo, depotTwo.getName(), typeOne, typeOne, depotOne.getName(), sellTwo, sellDeliveryTwo, (sellTwo + sellDeliveryTwo));
+                        System.out.println();
+
+                    }
+                }else if (depotTwo.possibleToSell() == true && depotOne.possibleToBuy(depotTwo.stockItself.getStockType(), (sellTwo + sellDeliveryTwo)) == true) {
+                    // System.out.println(transactionNum++);
+                    depotTwo.sell(depotOne.getName(), depotOne.stockItself.getStockType(), sellTwo, sellDeliveryTwo);
+                    depotOne.buy(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellTwo, sellDeliveryTwo);
+                    if (this.userType.equals(typeTwo) || this.userType.equals(typeOne)) {
+
+                        System.out.printf("|  Depot  %s%03d  Sales  %s  to    Depot  %s%03d   Sale:%2d   Delivery:%2d   Total:%2d  |",
+                                typeTwo, depotTwo.getName(), typeTwo, typeOne, depotOne.getName(), sellTwo, sellDeliveryTwo, (sellTwo + sellDeliveryTwo));
+                        System.out.println();
+
+                    }
+
+                } 
 
             }
             iteratorTwo.first();
