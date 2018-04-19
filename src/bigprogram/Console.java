@@ -70,17 +70,17 @@ public class Console {
         horizontalLine();
         System.out.print("\n\n\nPROFIT AND LOSS BY COMPANY\n");
         horizontalLine();
-        System.out.printf("| %11s | %10s | %10s | %10s | %10s | %10s |", "", "TOTAL", "TOTAL", "TOTAL", "TOTAL", "TOTAL");
+        System.out.printf("| %11s | %10s | %10s | %10s | %10s | %10s | %10s | %10s |", "", "", "", "TOTAL", "", "", "TOTAL", "TOTAL");
         System.out.println();
-        System.out.printf("| %11s | %10s | %10s | %10s | %10s | %10s |", "COMPANY", "SALES", "DELIVERY", "PURCHASES", "DELIVERY", "PROFIT");
+        System.out.printf("| %11s | %10s | %10s | %10s | %10s | %10s | %10s | %10s |", "COMPANY", "SALES", "DELIVERY", "SALES", "PURCHASES", "DELIVERY","TOTAL", "PROFIT");
         System.out.println();
-        System.out.printf("| %11s | %10s | %10s | %10s | %10s | %10s |", "", "", "SALES", "", "PURCHASES", "/LOSS");
+        System.out.printf("| %11s | %10s | %10s | %10s | %10s | %10s | %10s | %10s |", "", "", "SALES","SALES", "", "PURCHASES","PURCHASES", "/LOSS");
         System.out.println();
         horizontalLine();
     }
 
     public void horizontalLine(){
-            System.out.println("-------------------------------------------------------------------------------");
+            System.out.println("---------------------------------------------------------------------------------------------------------");
 
     }
     

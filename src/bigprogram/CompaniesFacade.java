@@ -16,77 +16,41 @@ public class CompaniesFacade {
     private Company companyA;
     private Company companyB;
     private Company companyC;
-    private DepotIterator iteratorA;
-    private DepotIterator iteratorB;
-    private DepotIterator iteratorC;
+//    private DepotIterator iteratorA;
+//    private DepotIterator iteratorB;
+//    private DepotIterator iteratorC;
+    private Console console;
     private String userType;
     public Integer TryingNum = 0;
-//    DepotIterator iteratorA = companyA.getIterator();
-//    DepotIterator iteratorB = companyB.getIterator();
-//    DepotIterator iteratorC = companyC.getIterator();
     Random rand = new Random();
-    Console console = new Console();
 
-    public CompaniesFacade() {
-        companyA = new Company("A");
-        companyB = new Company("B");
-        companyC = new Company("C");
+    public CompaniesFacade(Company companyA, Company companyB, Company companyC, Console console) {
+        this.companyA = companyA;
+        this.companyB = companyB;
+        this.companyC = companyC;
+        this.console = console;
+    }
+
+    public void treading() {
+
+        this.userType = console.welcomeMessage();
+        
+//        iteratorA = companyA.getDepotIterator();
+//        iteratorB = companyB.getDepotIterator();
+//        iteratorC = companyC.getDepotIterator();
+        performTransactions(companyA.getDepotIterator(), companyB.getDepotIterator(), companyC.getDepotIterator());
+        tradeInformationReport();
+        profitAndLostReport();
 
     }
 
-    public void treading(String userType) {
-
-        this.userType = userType;
-
-        iteratorA = companyA.getDepotIterator();
-        iteratorB = companyB.getDepotIterator();
-        iteratorC = companyC.getDepotIterator();
+    public void performTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam, DepotIterator iteratorThreeParam) {
         console.transactionsCompletedHeader(userType);
-        
-        performTransactions(iteratorA, iteratorB, iteratorC);
 
-        console.tradeInformationHeader(userType);
-        companyA.tradeInformationByDepot(userType.equals("A"));
-        companyB.tradeInformationByDepot(userType.equals("B"));
-        companyC.tradeInformationByDepot(userType.equals("C"));
-        console.horizontalLine();
-
-        console.profitAndLossHeader();
-        companyA.profitAndLost("A");
-        companyB.profitAndLost("B");
-        companyC.profitAndLost("C");
-        console.horizontalLine();
-        Integer mostSpent = companyA.spent();
-        Company mostSpentCompany = companyA;
-        if (mostSpent < companyB.spent()) {
-            mostSpent = companyB.spent();
-            mostSpentCompany = companyB;
-        }
-        if (mostSpent < companyC.spent()) {
-            mostSpent = companyC.spent();
-            mostSpentCompany = companyC;
-        }
-        System.out.printf("Company spent the most: Big-%1s Total Spent: $ %,6d \n", mostSpentCompany.getCompanyType(), mostSpentCompany.spent());
-        
-        Integer mostMade = companyA.made();
-        Company mostMadeCompany = companyA;
-        if (mostMade < companyB.made()) {
-            mostMade = companyB.made();
-            mostMadeCompany = companyB;
-        }
-        if (mostMade < companyC.made()) {
-            mostMade = companyC.made();
-            mostMadeCompany = companyC;
-        }
-        System.out.printf("Company made  the most: Big-%1s Total  Made: $ %,6d \n", mostMadeCompany.getCompanyType(), mostMadeCompany.made());
-    }
-
-    
-    public void performTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam,  DepotIterator iteratorThreeParam){
         DepotIterator iterator1 = iteratorOneParam;
-        DepotIterator iterator2 = iteratorTwoParam; 
-        DepotIterator iterator3 = iteratorThreeParam; 
-        
+        DepotIterator iterator2 = iteratorTwoParam;
+        DepotIterator iterator3 = iteratorThreeParam;
+
         sellFirstTransactions(iterator1, iterator2);
         buyFirstTransactions(iterator1, iterator2);
         sellFirstTransactions(iterator2, iterator3);
@@ -99,10 +63,9 @@ public class CompaniesFacade {
         buyFirstTransactions(iterator3, iterator2);
         sellFirstTransactions(iterator2, iterator1);
         buyFirstTransactions(iterator2, iterator1);
-        
+
     }
-    
-    
+
     public void sellFirstTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam) {
         DepotIterator iteratorOne = iteratorOneParam;
         DepotIterator iteratorTwo = iteratorTwoParam;
@@ -115,7 +78,7 @@ public class CompaniesFacade {
         String typeTwo;
         Integer sellTwo;
         Integer sellDeliveryTwo;
-        Integer count = 0;
+//        Integer count = 0;
 
         for (int i = 0; i < 100; i++) {
             depotOne = iteratorOne.next();
@@ -128,7 +91,7 @@ public class CompaniesFacade {
                 sellTwo = rand.nextInt(10) + 1;
                 sellDeliveryTwo = rand.nextInt(10) + 1;
                 typeTwo = depotTwo.stockItself.getStockType();
-               //                System.out.println(TryingNum++);
+                //                System.out.println(TryingNum++);
                 if (depotOne.possibleToSell() == true && depotTwo.possibleToBuy(depotOne.stockItself.getStockType(), (sellOne + sellDeliveryOne)) == true) {
                     // System.out.println(transactionNum++);
                     depotOne.sell(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellOne, sellDeliveryOne);
@@ -158,7 +121,8 @@ public class CompaniesFacade {
         }
         iteratorOne.first();
     }
-public void buyFirstTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam) {
+
+    public void buyFirstTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam) {
         DepotIterator iteratorOne = iteratorOneParam;
         DepotIterator iteratorTwo = iteratorTwoParam;
 
@@ -183,9 +147,8 @@ public void buyFirstTransactions(DepotIterator iteratorOneParam, DepotIterator i
                 sellTwo = rand.nextInt(10) + 1;
                 sellDeliveryTwo = rand.nextInt(10) + 1;
                 typeTwo = depotTwo.stockItself.getStockType();
-                 //              System.out.println(TryingNum++);
-                
-                               
+                //               System.out.println(TryingNum++);
+
                 if (depotOne.possibleToSell() == true && depotTwo.possibleToBuy(depotOne.stockItself.getStockType(), (sellOne + sellDeliveryOne)) == true) {
                     // System.out.println(transactionNum++);
                     depotOne.sell(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellOne, sellDeliveryOne);
@@ -196,7 +159,7 @@ public void buyFirstTransactions(DepotIterator iteratorOneParam, DepotIterator i
                         System.out.println();
 
                     }
-                }else if (depotTwo.possibleToSell() == true && depotOne.possibleToBuy(depotTwo.stockItself.getStockType(), (sellTwo + sellDeliveryTwo)) == true) {
+                } else if (depotTwo.possibleToSell() == true && depotOne.possibleToBuy(depotTwo.stockItself.getStockType(), (sellTwo + sellDeliveryTwo)) == true) {
                     // System.out.println(transactionNum++);
                     depotTwo.sell(depotOne.getName(), depotOne.stockItself.getStockType(), sellTwo, sellDeliveryTwo);
                     depotOne.buy(depotTwo.getName(), depotTwo.stockItself.getStockType(), sellTwo, sellDeliveryTwo);
@@ -208,7 +171,7 @@ public void buyFirstTransactions(DepotIterator iteratorOneParam, DepotIterator i
 
                     }
 
-                } 
+                }
 
             }
             iteratorTwo.first();
@@ -216,4 +179,44 @@ public void buyFirstTransactions(DepotIterator iteratorOneParam, DepotIterator i
         iteratorOne.first();
     }
 
+    public void tradeInformationReport() {
+        console.tradeInformationHeader(this.userType);
+        companyA.tradeInformationByDepot(this.userType);
+        companyB.tradeInformationByDepot(this.userType);
+        companyC.tradeInformationByDepot(this.userType);
+        console.horizontalLine();
+
+    }
+
+    public void profitAndLostReport() {
+        console.profitAndLossHeader();
+        companyA.profitAndLost();
+        companyB.profitAndLost();
+        companyC.profitAndLost();
+        console.horizontalLine();
+
+        Integer mostSpent = companyA.spent();
+        Company mostSpentCompany = companyA;
+        if (mostSpent < companyB.spent()) {
+            mostSpent = companyB.spent();
+            mostSpentCompany = companyB;
+        }
+        if (mostSpent < companyC.spent()) {
+            mostSpent = companyC.spent();
+            mostSpentCompany = companyC;
+        }
+        System.out.printf("Company spent the most: Big-%1s Total Spent: $ %,6d \n", mostSpentCompany.getCompanyType(), mostSpentCompany.spent());
+
+        Integer mostMade = companyA.made();
+        Company mostMadeCompany = companyA;
+        if (mostMade < companyB.made()) {
+            mostMade = companyB.made();
+            mostMadeCompany = companyB;
+        }
+        if (mostMade < companyC.made()) {
+            mostMade = companyC.made();
+            mostMadeCompany = companyC;
+        }
+        System.out.printf("Company made  the most: Big-%1s Total  Made: $ %,6d \n", mostMadeCompany.getCompanyType(), mostMadeCompany.made());
+    }
 }

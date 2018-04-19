@@ -39,8 +39,7 @@ public class Company {
 //        iterator.first();
     }
 
-    public void tradeInformationByDepot(Boolean print) {
-
+    public void tradeInformationByDepot(String userType) {
         Depot one;
         iterator.first();
         for (int i = 0; i < 100; i++) {
@@ -50,15 +49,15 @@ public class Company {
             this.totalDeliverySales += one.allowance.getDeliverSales();
             this.totalPurchases += one.allowance.getPurchases();
             this.totalDeliveryPurchases += one.allowance.getDeliverPurchases();
-            if (print == true) {
+            if (userType.equals(companyType) == true) {
                 one.tradeInformationPrint();
             }
         }
 
     }
 
-    public void profitAndLost(String type) {
-        System.out.printf("| Company %3s | %,10d | %,10d | %,10d | %,10d | %,10d |", type, totalSales, totalDeliverySales, totalPurchases, totalDeliveryPurchases, (totalSales + totalDeliverySales - totalPurchases - totalDeliveryPurchases));
+    public void profitAndLost() {
+        System.out.printf("| Company %3s | %,10d | %,10d | $ %,8d | %,10d | %,10d | $ %,8d | %,10d |", companyType, totalSales, totalDeliverySales,(totalSales+totalDeliverySales), totalPurchases, totalDeliveryPurchases,(totalPurchases+totalDeliveryPurchases) ,  (totalSales + totalDeliverySales - totalPurchases - totalDeliveryPurchases));
         System.out.println();
 
     }
