@@ -23,23 +23,23 @@ public class DepotBuilder {
 
     }
     
-    public void buildDepot (Integer name, String type){
+    public void buildDepot (Integer name, Type type){
     //    System.out.println(type);
           depot = new Depot();   
      switch (type) {
-            case "A":  this.stockItself = new Stock("A", (rand.nextInt((50 - 15) + 1) + 15));
-                       this.stockOther = new Stock("B", (rand.nextInt((40 - 3) + 1) + 3));
-                       this.stockAnother = new Stock("C", (rand.nextInt((40 - 3) + 1) + 3));
+            case A:  this.stockItself = new Stock(type.A, (rand.nextInt((50 - 15) + 1) + 15));
+                       this.stockOther = new Stock(type.B, (rand.nextInt((40 - 3) + 1) + 3));
+                       this.stockAnother = new Stock(type.C, (rand.nextInt((40 - 3) + 1) + 3));
                        this.allowance = new Allowance((rand.nextInt((100 - 40) + 1) + 40));
                      break;
-            case "B":  this.stockItself = new Stock("B", (rand.nextInt((50 - 15) + 1) + 15));
-                       this.stockOther = new Stock("C", (rand.nextInt((40 - 3) + 1) + 3));
-                       this.stockAnother = new Stock("A", (rand.nextInt((40 - 3) + 1) + 3));
+            case B:  this.stockItself = new Stock(Type.B, (rand.nextInt((50 - 15) + 1) + 15));
+                       this.stockOther = new Stock(Type.C, (rand.nextInt((40 - 3) + 1) + 3));
+                       this.stockAnother = new Stock(Type.A, (rand.nextInt((40 - 3) + 1) + 3));
                        this.allowance = new Allowance((rand.nextInt((100 - 40) + 1) + 40));
                      break;
-            case "C":  this.stockItself = new Stock("C", (rand.nextInt((50 - 15) + 1) + 15));
-                       this.stockOther = new Stock("A", (rand.nextInt((40 - 3) + 1) + 3));
-                       this.stockAnother = new Stock("B", (rand.nextInt((40 - 3) + 1) + 3));
+            case C:  this.stockItself = new Stock(Type.C, (rand.nextInt((50 - 15) + 1) + 15));
+                       this.stockOther = new Stock(Type.A, (rand.nextInt((40 - 3) + 1) + 3));
+                       this.stockAnother = new Stock(Type.B, (rand.nextInt((40 - 3) + 1) + 3));
                        this.allowance = new Allowance((rand.nextInt((100 - 40) + 1) + 40));
                      break;
             default: System.out.println("Invalid Type");
@@ -52,7 +52,7 @@ public class DepotBuilder {
      this.depot.setAllowance(this.allowance);
     }
     
-    public Depot getNewDepot(Integer name, String type){
+    public Depot getNewDepot(Integer name, Type type){
         buildDepot (name, type);
         return depot;
     }

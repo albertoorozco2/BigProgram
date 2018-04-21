@@ -53,7 +53,7 @@ public class Depot {
         return this.stockItself.getStockAmount() > 15;
     }
 
-    public void sell(Integer name, String type, Integer sales, Integer deliverySales) {
+    public void sell(Integer name, Type type, Integer sales, Integer deliverySales) {
         //       System.out.println("stock deliverySales : " +deliverySales+" sales: "+sales );
 
         this.stockItself.sellStock();
@@ -65,7 +65,7 @@ public class Depot {
 
     }
 
-    public Boolean possibleToBuy(String type, Integer amount) {
+    public Boolean possibleToBuy(Type type, Integer amount) {
         Boolean test = null;
         if ((this.allowance.getAllowance() - 50) >= amount) {
             if (this.stockOther.getStockType().equals(type)) {
@@ -80,7 +80,7 @@ public class Depot {
         return test;
     }
 
-    public void buy(Integer nameDepot, String type, Integer purchase, Integer deliveryPurchase) {
+    public void buy(Integer nameDepot, Type type, Integer purchase, Integer deliveryPurchase) {
         //            System.out.println(type+" "+stockOther.getStockType());
         //            System.out.println(type+" "+stockAnother.getStockType());
 
@@ -101,7 +101,7 @@ public class Depot {
     }
 
     public void tradeInformationPrint() {
-        System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType() + this.name, allowance.getSales(), allowance.getDeliverSales(), stockItself.getUnitSold(), allowance.getPurchases(), allowance.getDeliverPurchases());
+        System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType() +"-"+ this.name, allowance.getSales(), allowance.getDeliverSales(), stockItself.getUnitSold(), allowance.getPurchases(), allowance.getDeliverPurchases());
         System.out.println();
   //      System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType() + this.name, 0, 0, stockItself.stockInitial, this.stockAnother.getStockAmount(), this.stockOther.getStockAmount());
   //

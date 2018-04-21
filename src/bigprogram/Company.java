@@ -15,31 +15,23 @@ public class Company {
     private Integer totalDeliverySales = 0;
     private Integer totalPurchases = 0;
     private Integer totalDeliveryPurchases = 0;
-    private DepotBuilder depotBuilder = new DepotBuilder();
-    private DepotStorage storage = new DepotStorage();
+    private DepotBuilder depotBuilder;
+    private DepotStorage storage;
     private DepotIterator iterator;
-    private String companyType;
+    private Type companyType;
 
-    public Company(String type) {
+    public Company(Type type, DepotBuilder depotBuilder, DepotStorage storage) {
+        this.storage = storage;
         this.companyType = type;
+        this.depotBuilder = depotBuilder;
         for (int i = 1; i < 101; i++) {
             storage.addDepot(depotBuilder.getNewDepot(i, type));
         }
-    //    System.out.println(type+"completed");
         iterator = new DepotIterator(storage.getDepots());
-//        System.out.println(type+"completed");
 
-//        Depot one;
-//        for (int i = 0; i < 100; i++) {
-//
-//            one = iterator.next();
-//            //         System.out.println(one.stockItself.getStockType()+"-"+one.getName());
-//
-//        }
-//        iterator.first();
     }
 
-    public void tradeInformationByDepot(String userType) {
+    public void tradeInformationByDepot(Type userType) {
         Depot one;
         iterator.first();
         for (int i = 0; i < 100; i++) {
@@ -49,7 +41,7 @@ public class Company {
             this.totalDeliverySales += one.allowance.getDeliverSales();
             this.totalPurchases += one.allowance.getPurchases();
             this.totalDeliveryPurchases += one.allowance.getDeliverPurchases();
-            if (userType.equals(companyType) == true) {
+            if (userType == companyType) {
                 one.tradeInformationPrint();
             }
         }
@@ -70,7 +62,7 @@ public class Company {
         return totalSales + totalDeliverySales;
     }
 
-    public String getCompanyType() {
+    public Type getCompanyType() {
         return companyType;
     }
 

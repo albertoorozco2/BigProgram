@@ -11,11 +11,11 @@ package bigprogram;
  */
 public class Stock {
 
-    private String stockType = null;
+    private Type stockType;
     private Integer stockAmount = 0;
     public Integer stockInitial = 0;
 
-    public Stock(String stockType, Integer stockAmount) {
+    public Stock(Type stockType, Integer stockAmount) {
         this.stockType = stockType;
         this.stockAmount = stockAmount;
         this.stockInitial = stockAmount;
@@ -24,7 +24,7 @@ public class Stock {
 
     }
 
-    public String getStockType() {
+    public Type getStockType() {
         //  System.out.println("Stocktype -" +this.stockType );
 
         return this.stockType;

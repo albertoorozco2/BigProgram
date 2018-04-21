@@ -14,11 +14,11 @@ import java.util.Scanner;
 public class Console {
 
     Scanner sc = new Scanner(System.in);
-
+    Type userType;
     public Console() {
     }
 
-    public String welcomeMessage() {
+    public Type welcomeMessage() {
         System.out.println("          +-+-+-+-+-+-+-+-+-+-+\n" 
                          +"          |B|i|g|P|r|o|g|r|a|m|\n" 
                          +"          +-+-+-+-+-+-+-+-+-+-+\n\n"
@@ -32,18 +32,25 @@ public class Console {
                         + "Type your selection: ");
 
         String companySelection = sc.nextLine().toUpperCase().trim();
-        if (companySelection.equals("A") || companySelection.equals("B") || companySelection.equals("C")) {
-            System.out.println("You have selected to start trading as Big " + companySelection + "\n");
-        } else {
-            System.out.println("You have selected to start trading autonomously \n");
-            companySelection = "";
+
+        switch (companySelection) {
+            case "A":  userType = userType.A;
+                     break;
+            case "B":  userType = userType.B;
+                     break;
+            case "C":  userType = userType.C;
+                     break;
+            default: userType = userType.X;
+                     break;
+        
         }
-        return companySelection;
+        return userType;
+    
     }
 
-    public void transactionsCompletedHeader(String userType) {
-         if(!userType.equals("")){
-        System.out.println("\n\nTRANSACTIONS COMPLETED BY BIG " + userType + "\n");
+    public void transactionsCompletedHeader(Type userType) {
+         if(userType!=Type.X){
+        System.out.println("\n\nTRANSACTIONS COMPLETED BY BIG " + userType.toString() + "\n");
         horizontalLine();
         System.out.printf("| %10s | %10s | %10s | %10s | %10s | %10s |", "Depot", "Transaction", "to", "Sale/Buy", "Delivery", "Total");
         System.out.println();
@@ -51,12 +58,12 @@ public class Console {
         }
     }
 
-    public void tradeInformationHeader(String userType) {
+    public void tradeInformationHeader(Type userType) {
         
-        if(!userType.equals("")){
+        if(userType!=Type.X){
         horizontalLine();
 
-        System.out.print("\n\n\nTRADE INFORMATION BY DEPOT " + userType + "\n");
+        System.out.print("\n\n\nTRADE INFORMATION BY DEPOT " + userType.toString() + "\n");
         horizontalLine();
         System.out.printf("| %10s | %10s | %10s | %10s | %10s | %10s |", "DEPOT", "SALES", "DELIVERY", "UNIT", "PURCHASES", "DELIVERY");
         System.out.println();

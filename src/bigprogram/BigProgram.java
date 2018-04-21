@@ -5,23 +5,29 @@
  */
 package bigprogram;
 
-import java.util.Scanner;
 
 /**
  *
  * @author A1
  */
 public class BigProgram {
+    
   
     public static void main(String[] args) {
-        Boolean run;
-        do{ 
         Console console = new Console();
-        Company companyA = new Company("Alberto");
-        Company companyB = new Company("B");
-        Company companyC = new Company("C");
-        CompaniesFacade CompaniesFacade = new CompaniesFacade(companyA, companyB, companyC, console);
-       
+        DepotBuilder depotBuilder = new DepotBuilder();
+        DepotStorage storage = new DepotStorage();
+        Company companyA;
+        Company companyB;
+        Company companyC;
+        CompaniesFacade CompaniesFacade;
+        Boolean run;
+
+        do{ 
+         companyA = new Company(Type.A, depotBuilder, storage);
+         companyB = new Company(Type.B, depotBuilder, storage);
+         companyC = new Company(Type.C, depotBuilder, storage);
+         CompaniesFacade = new CompaniesFacade(companyA, companyB, companyC, console);
         CompaniesFacade.treading();
         run = console.returnToMain();
         }while(run==true);

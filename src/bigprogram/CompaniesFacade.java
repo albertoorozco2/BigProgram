@@ -16,12 +16,8 @@ public class CompaniesFacade {
     private Company companyA;
     private Company companyB;
     private Company companyC;
-//    private DepotIterator iteratorA;
-//    private DepotIterator iteratorB;
-//    private DepotIterator iteratorC;
     private Console console;
-    private String userType;
-    public Integer TryingNum = 0;
+    private Type userType;
     Random rand = new Random();
 
     public CompaniesFacade(Company companyA, Company companyB, Company companyC, Console console) {
@@ -34,22 +30,18 @@ public class CompaniesFacade {
     public void treading() {
 
         this.userType = console.welcomeMessage();
-        
-//        iteratorA = companyA.getDepotIterator();
-//        iteratorB = companyB.getDepotIterator();
-//        iteratorC = companyC.getDepotIterator();
-        performTransactions(companyA.getDepotIterator(), companyB.getDepotIterator(), companyC.getDepotIterator());
+        performTransactions();
         tradeInformationReport();
         profitAndLostReport();
 
     }
 
-    public void performTransactions(DepotIterator iteratorOneParam, DepotIterator iteratorTwoParam, DepotIterator iteratorThreeParam) {
+    public void performTransactions() {
         console.transactionsCompletedHeader(userType);
 
-        DepotIterator iterator1 = iteratorOneParam;
-        DepotIterator iterator2 = iteratorTwoParam;
-        DepotIterator iterator3 = iteratorThreeParam;
+        DepotIterator iterator1 = companyA.getDepotIterator();
+        DepotIterator iterator2 = companyB.getDepotIterator();
+        DepotIterator iterator3 = companyC.getDepotIterator();
 
         sellFirstTransactions(iterator1, iterator2);
         buyFirstTransactions(iterator1, iterator2);
@@ -71,11 +63,11 @@ public class CompaniesFacade {
         DepotIterator iteratorTwo = iteratorTwoParam;
 
         Depot depotOne;
-        String typeOne;
+        Type typeOne;
         Integer sellOne;
         Integer sellDeliveryOne;
         Depot depotTwo;
-        String typeTwo;
+        Type typeTwo;
         Integer sellTwo;
         Integer sellDeliveryTwo;
 //        Integer count = 0;
@@ -127,11 +119,11 @@ public class CompaniesFacade {
         DepotIterator iteratorTwo = iteratorTwoParam;
 
         Depot depotOne;
-        String typeOne;
+        Type typeOne;
         Integer sellOne;
         Integer sellDeliveryOne;
         Depot depotTwo;
-        String typeTwo;
+        Type typeTwo;
         Integer sellTwo;
         Integer sellDeliveryTwo;
         Integer count = 0;

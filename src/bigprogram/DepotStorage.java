@@ -23,7 +23,10 @@ public class DepotStorage {
     }
     
     public Depot[] getDepots(){
-        return depots;
+        Depot []depotsCompleted = this.depots;
+          this.depots = new Depot[100];
+          index = 0;
+        return depotsCompleted;
 }
 
 }
