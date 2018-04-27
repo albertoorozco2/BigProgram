@@ -16,6 +16,10 @@ package bigprogram;
  */
 public class BigProgram {
 
+    /**
+     * BigProgram initializes the program and all the objects required such  such as console, Deport Builder, DepotStorage, Company objects.
+     * @param args
+     */
     public static void main(String[] args) {
         Console console = new Console();
         DepotBuilder depotBuilder = new DepotBuilder() {

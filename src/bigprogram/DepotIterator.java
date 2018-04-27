@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 /**
  * DepotIterator is the class to hold and keep track of Depot in the iterator.
- * DepotIterator is the class to hold and keep track of Depot in the iterator, 
+ * DepotIterator is the class to hold and keep track of Depot in the iterator,
  * It hold a all the Depots in an Array of Depot and the position with a int variable.
  *
  * @author Alberto Orozco
@@ -24,15 +24,18 @@ public class DepotIterator implements Iterator<Depot> {
     /**
      * The DepotIterator used for initialization of the DepotIterator object.
      * In order to initialize it required a Depot Array and it sets position to 0/
+     *
      * @param depots Array of Depots to iterate.
      */
     public DepotIterator(Depot[] depots) {
         this.depots = depots;
         position = 0;
     }
+
     /**
      * The hasNext implementation the interface Iterator, return boolean, if there is next.
      * The hasNext implementation the interface Iterator, return boolean, if there is next.
+     *
      * @return boolean returns true if there is next.
      */
     @Override
@@ -42,19 +45,23 @@ public class DepotIterator implements Iterator<Depot> {
         }
         return true;
     }
-   /**
+
+    /**
      * The next implementation the interface Iterator, return next Depot.
      * The next implementation the interface Iterator, return next Depot.
+     *
      * @return Depot returns next Depot in the Iterator.
      */
     @Override
     public Depot next() {
         return depots[position++];
     }
-    
+
+    /**
+     * The first set position to 0 to restart again the Iterator.
+     */
     public void first() {
-         position = 0;
+        position = 0;
     }
-   
 
 }

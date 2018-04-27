@@ -8,8 +8,8 @@ package bigprogram;
 /**
  * Type is the enum to hold allow types "A", "B", "C" and "X".
  * Type is the enum to hold allow types "A", "B", "C" and "X",
- * type A, B, C, are the allow companies name and Type, 
- * and X it is used in case user does not select a specific company, 
+ * type A, B, C, are the allow companies name and Type,
+ * and X it is used in case user does not select a specific company,
  * adnd decides to trade autonomously.
  *
  * @author Alberto Orozco
@@ -17,8 +17,32 @@ package bigprogram;
  * @author Camila Silva
  */
 public enum Type {
-    A("A"), B("B"), C("C"), X("X");
+
+    /**
+     * Type A when user chose to trade as CompanyA with Stock type "A"
+     */
+    A("A"),
+
+    /**
+     * Type B when user chose to trade as CompanyB with Stock type "B"
+     */
+    B("B"),
+
+    /**
+     * Type C when user chose to trade as CompanyC with Stock type "C"
+     */
+    C("C"),
+
+    /**
+     * Type X = "X" when user does select to run autonomously 
+     */
+    X("X");
+
+    /**
+     *
+     */
     public String name;
+
     /**
      * The Type required a String to set name of the Type.
      * The Type required a String to set name of the Type.
@@ -28,6 +52,7 @@ public enum Type {
     private Type(String name) {
         this.name = name;
     }
+
     /**
      * The toString return a String to of name of the Type.
      * The toString return a String to of name of the Type.

@@ -41,7 +41,6 @@ public class DepotBuilder implements Builder {
      * @param name required a Integer as name for the Depot.
      * @param type required a Type object to set the Type of Depot.
      */
-
     @Override
     public void buildDepot(Integer name, Type type) {
         //    System.out.println(type);
@@ -75,10 +74,11 @@ public class DepotBuilder implements Builder {
         this.depot.setStockAnother(this.stockAnother);
         this.depot.setAllowance(this.allowance);
     }
+
     /**
      * The getNewDepot returns the new Depot builded.
      * the method call the buildDepot before returning a new Depot.
-     * 
+     *
      * @param name required a Integer as name for the Depot.
      * @param type required a Type object to set the Type of Depot.
      * @return Depot based of the inputs.

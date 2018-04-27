@@ -17,10 +17,10 @@ package bigprogram;
 public class Depot {
 
     private Integer name = null;
-    protected Stock stockItself = null;
+    private Stock stockItself = null;
     private Stock stockOther = null;
     private Stock stockAnother = null;
-    Allowance allowance = null;
+    private Allowance allowance = null;
 
     /**
      * The Depot used for initialization of the Depot object.
@@ -58,6 +58,7 @@ public class Depot {
         this.stockAnother = stockAnother;
     }
 
+    
     /**
      * The setAllowance set the allowance for the Depot.
      * The setAllowance set the allowance for the Depot.
@@ -67,7 +68,15 @@ public class Depot {
     public void setAllowance(Allowance allowance) {
         this.allowance = allowance;
     }
-
+    /**
+     * The getAllowance set the allowance for the Depot.
+     * The setAllowance set the allowance for the Depot.
+     *
+     * @return allowance returns its allowance
+     */
+    public Allowance getAllowance() {
+        return this.allowance;
+    }
     /**
      * The setName set the name for the Depot.
      * The setName set the name for the Depot.
@@ -87,7 +96,15 @@ public class Depot {
     public Integer getName() {
         return this.name;
     }
-
+    /**
+     * The getStockItself return the main Stock of itself.
+     * The getStockItself return the main Stock of itself.
+     *
+     * @return Stock return a Stock as a name.
+     */
+    public Stock getStockItself() {
+        return this.stockItself;
+    }
     /**
      * The possibleToSell return Boolean if it is possible to sell .
      * The possibleToSell return Boolean if it is possible to sell .
@@ -118,6 +135,8 @@ public class Depot {
      * The possibleToBuy return Boolean if it is possible to buy .
      * The possibleToBuy return Boolean if it is possible to buy .
      *
+     * @param type required the type of the stock of the Depot that is doing the transaction with.
+     * @param amount required the amount of the purchase.
      * @return Boolean return a boolean if it stock its higher than 40 and allowance higher than 50.
      */
     public Boolean possibleToBuy(Type type, Integer amount) {

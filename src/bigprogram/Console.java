@@ -67,10 +67,12 @@ public class Console {
         return userType;
 
     }
+
     /**
      * The transactionsCompletedHeader print on screen a formated header for the transaction report.
      * The transactionsCompletedHeader print on screen a formated header for the transaction report.
      *
+     * @param userType Type object to print header if user chose a type A, B , or C. 
      */
     public void transactionsCompletedHeader(Type userType) {
         if (userType != Type.X) {
@@ -81,10 +83,12 @@ public class Console {
             horizontalLine();
         }
     }
+
     /**
      * The tradeInformationHeader print on screen a formated header for the Trade Information report.
      * The tradeInformationHeader print on screen a formated header for the Trade Information report.
      *
+     * @param userType Type object to print header if user chose a type A, B , or C. 
      */
     public void tradeInformationHeader(Type userType) {
 
@@ -100,6 +104,7 @@ public class Console {
             horizontalLine();
         }
     }
+
     /**
      * The profitAndLossHeader print on screen a formated header for the profit and loss report.
      * The profitAndLossHeader print on screen a formated header for the profit and loss report.
@@ -117,7 +122,8 @@ public class Console {
         System.out.println();
         horizontalLine();
     }
- /**
+
+    /**
      * The horizontalLine print on screen a horizontal line.
      * The horizontalLine print on screen a horizontal line.
      *
@@ -126,10 +132,12 @@ public class Console {
         System.out.println("---------------------------------------------------------------------------------------------------------");
 
     }
- /**
+
+    /**
      * The returnToMain print on screen a line to ask to the user for a input and wait for the to return to the main menu.
      * The returnToMain print on screen a line to ask to the user for a input and wait for the to return to the main menu.
      *
+     * @return  Boolean base on input of the user, if "EXIT" return false, any other return true.
      */
     public Boolean returnToMain() {
         System.out.println("\n\n\n\n\n\nType any key to return to the main Menu"
