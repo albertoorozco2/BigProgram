@@ -1,54 +1,87 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * College of Computing Technology.
+ * Object Orientation with Design
+ * Teacher: Mark Morrissey
  */
 package bigprogram;
 
 /**
+ * Stock is the class to hold and keep track of specific the stock.
+ * Stock is the class to hold and keep track of specific the stock.
  *
- * @author A1
+ * @author Alberto Orozco
+ * @author Roberto Rivera
+ * @author Camila Silva
  */
 public class Stock {
 
     private Type stockType;
     private Integer stockAmount = 0;
-    public Integer stockInitial = 0;
+    private Integer stockInitial = 0;
 
+    /**
+     * The Stock used for initialization of the Stock Object require the Type of STock and the Amount.
+     * The Stock used for initialization of the Stock Object require the Type of STock and the Amount.
+     *
+     * @param stockType a Type of stock to be stored
+     * @param stockAmount amount of the stock to be stored
+     */
     public Stock(Type stockType, Integer stockAmount) {
         this.stockType = stockType;
         this.stockAmount = stockAmount;
         this.stockInitial = stockAmount;
-    //    System.out.println(stockInitial);
-        //  System.out.println("Stocktype = " +stockType+"   stockamount= "+ stockAmount );
 
     }
 
+    /**
+     * The getStockType return an Type of the Stock object.
+     * The getStockType return an Type of the Stock object.
+     *
+     * @return Type the type of the stock.
+     */
     public Type getStockType() {
-        //  System.out.println("Stocktype -" +this.stockType );
-
         return this.stockType;
     }
 
+    /**
+     * The getStockAmount return an amount available of the Stock object.
+     * The getStockAmount return an amount available of the Stock object.
+     *
+     * @return Integer amount available of the Stock.
+     */
     public Integer getStockAmount() {
-        // System.out.println("stockAmount -" +this.stockAmount );
-
         return this.stockAmount;
     }
 
+    /**
+     * The getUnitSold return an amount units sold of the Stock object.
+     * The getUnitSold return an amount units sold of the Stock object,
+     * by subtracting the actual amount from the initial amount.
+     *
+     * @return Integer amount units sold of the Stock.
+     */
     public Integer getUnitSold() {
-        //   System.out.println("getUnitSold -" + (this.stockInitial - this.stockAmount) );
         return this.stockInitial - this.stockAmount;
     }
 
+    /**
+     * The sellStock register the sell of one unit.
+     * The sellStock register the sell of one unit,
+     * by subtracting a unit from the stock amount.
+     *
+     */
     public void sellStock() {
         this.stockAmount = this.stockAmount - 1;
-        //System.out.println("stockAmount : " +this.stockAmount );
     }
 
+    /**
+     * The buyStock register the buy of one unit.
+     * The buyStock register the buy of one unit.
+     * by adding a unit from to stock amount.
+     *
+     */
     public void buyStock() {
         this.stockAmount = this.stockAmount + 1;
-        // System.out.println("stockAmount -" +this.stockAmount );
 
     }
 }

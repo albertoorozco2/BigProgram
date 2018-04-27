@@ -1,70 +1,125 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * College of Computing Technology.
+ * Object Orientation with Design
+ * Teacher: Mark Morrissey
  */
 package bigprogram;
 
 /**
+ * Depot is the class to hold a Depot features such as Stocks, and Allowance.
+ * Depot is the class to hold a Depot features:
+ * .
  *
- * @author A1
+ * @author Alberto Orozco
+ * @author Roberto Rivera
+ * @author Camila Silva
  */
 public class Depot {
 
     private Integer name = null;
-    Stock stockItself = null;
+    protected Stock stockItself = null;
     private Stock stockOther = null;
     private Stock stockAnother = null;
     Allowance allowance = null;
 
+    /**
+     * The Depot used for initialization of the Depot object.
+     */
     public Depot() {
     }
 
+    /**
+     * The setStockItself set the main stock of the Depot.
+     * The setStockItself required a Stock object and set the main Stock of the Depot .
+     *
+     * @param stockItself required a Stock object to set the StockItself.
+     */
     public void setStockItself(Stock stockItself) {
         this.stockItself = stockItself;
     }
 
+    /**
+     * The setStockOther set the stock of an different type from the Depot.
+     * The setStockOther set the stock of an different type from the Depot.
+     *
+     * @param stockOther required a Stock object to set the StockItself.
+     */
     public void setStockOther(Stock stockOther) {
         this.stockOther = stockOther;
     }
 
+    /**
+     * The setStockAnother set the stock of an third different type from the Depot.
+     * The setStockOther set the stock of an third different type from the Depot.
+     *
+     * @param stockAnother required a Stock object to set the StockItself.
+     */
     public void setStockAnother(Stock stockAnother) {
         this.stockAnother = stockAnother;
     }
 
+    /**
+     * The setAllowance set the allowance for the Depot.
+     * The setAllowance set the allowance for the Depot.
+     *
+     * @param allowance required a allowance object to set the allowance of the depot.
+     */
     public void setAllowance(Allowance allowance) {
-        // System.out.print("this allowance"+allowance);
         this.allowance = allowance;
     }
 
+    /**
+     * The setName set the name for the Depot.
+     * The setName set the name for the Depot.
+     *
+     * @param name required a Integer as to set the StockItself.
+     */
     public void setName(Integer name) {
         this.name = name;
     }
 
+    /**
+     * The getName return the name for the Depot.
+     * The getName return the name for the Depot.
+     *
+     * @return name return a Integer as a name.
+     */
     public Integer getName() {
-        //   System.out.println("name = " +this.name );
         return this.name;
     }
 
+    /**
+     * The possibleToSell return Boolean if it is possible to sell .
+     * The possibleToSell return Boolean if it is possible to sell .
+     *
+     * @return Boolean return a boolean if it stock its lower than 15.
+     */
     public Boolean possibleToSell() {
-//               System.out.println("posible sel = " +this.stockItself.getStockAmount() );
-        //      System.out.println("posible sel = " +(this.stockItself.stockAmount>15) );
-
         return this.stockItself.getStockAmount() > 15;
     }
 
+    /**
+     * The sell perform a sell transaction.
+     * The sell method perform a sell transaction by updating the sellStock, Sales, and Delivery Sells .
+     *
+     * @param name required the name of the Depot that is doing the transaction with.
+     * @param type required the type of the stock of the Depot that is doing the transaction with.
+     * @param sales required the amount of the sales.
+     * @param deliverySales required the amount of the sales.
+     */
     public void sell(Integer name, Type type, Integer sales, Integer deliverySales) {
-        //       System.out.println("stock deliverySales : " +deliverySales+" sales: "+sales );
 
         this.stockItself.sellStock();
         this.allowance.setSales(sales);
         this.allowance.setDeliverSales(deliverySales);
-        //         System.out.printf("Depot%s%03d sales %s from Depot%s%03d Sale %2d Delivery Sale %2d, Total %2d",
-        //                        this.stockItself.getStockType(), this.name, this.stockItself.getStockType(),  type, name, sales, deliverySales, (sales+deliverySales));
-        //        System.out.println();
-
     }
 
+    /**
+     * The possibleToBuy return Boolean if it is possible to buy .
+     * The possibleToBuy return Boolean if it is possible to buy .
+     *
+     * @return Boolean return a boolean if it stock its higher than 40 and allowance higher than 50.
+     */
     public Boolean possibleToBuy(Type type, Integer amount) {
         Boolean test = null;
         if ((this.allowance.getAllowance() - 50) >= amount) {
@@ -76,16 +131,19 @@ public class Depot {
         } else {
             test = false;
         }
-        //System.out.println("posible Buy "+test);
         return test;
     }
 
+    /**
+     * The buy perform a buy transaction.
+     * The buy method perform a buy transaction by updating the Stock of the type, purchase, and delivery Purchase Sells .
+     *
+     * @param nameDepot required the name of the Depot that is doing the transaction with.
+     * @param type required the type of the stock of the Depot that is doing the transaction with.
+     * @param purchase required the amount of the purchase.
+     * @param deliveryPurchase required the amount of the delivery purchase .
+     */
     public void buy(Integer nameDepot, Type type, Integer purchase, Integer deliveryPurchase) {
-        //            System.out.println(type+" "+stockOther.getStockType());
-        //            System.out.println(type+" "+stockAnother.getStockType());
-
-        //      System.out.println(type.equals(stockOther.getStockType()));
-        //     System.out.println(type == stockAnother.getStockType());
         if (type.equals(stockOther.getStockType())) {
             stockOther.buyStock();
             allowance.setPurchases(purchase);
@@ -95,27 +153,16 @@ public class Depot {
             allowance.setPurchases(purchase);
             allowance.setDeliverPurchases(deliveryPurchase);
         }
-        // System.out.printf("Depot%s%03d purchase %s from Depot%s%03d Purchase %2d Delivery Purchase %2d, Total %2d",
-        //                     this.stockItself.getStockType(), this.name, type, type, nameDepot, purchase, deliveryPurchase, (purchase+deliveryPurchase));
-        // System.out.println();
     }
 
+    /**
+     * The tradeInformationPrint print the trade information for depot.
+     * The tradeInformationPrint method print a formated trade information for depot.
+     */
     public void tradeInformationPrint() {
-        System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType() +"-"+ this.name, allowance.getSales(), allowance.getDeliverSales(), stockItself.getUnitSold(), allowance.getPurchases(), allowance.getDeliverPurchases());
+        System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType() + "-" + this.name, allowance.getSales(), allowance.getDeliverSales(), stockItself.getUnitSold(), allowance.getPurchases(), allowance.getDeliverPurchases());
         System.out.println();
-  //      System.out.printf("| DEPOT%5s | %,10d | %,10d | %,10d | %,10d | %,10d |", this.stockItself.getStockType() + this.name, 0, 0, stockItself.stockInitial, this.stockAnother.getStockAmount(), this.stockOther.getStockAmount());
-  //
-//        System.out.println(" Iallowance>"+ allowance.initialAllowance +
-//                            " Falowance>"+allowance.getAllowance()+
-//                            " Istocki>"+ stockItself.stockInitial+
-//                            " FStocki>"+stockItself.getStockAmount()+
-//                            " IStockO>"+stockOther.stockInitial+
-//                            " FStockO>"+stockOther.getStockAmount()+
-//                            " IStockA>"+stockAnother.stockInitial+
-//                            " FStockA>"+stockAnother.getStockAmount()
-//                );
-          
-                   
+
     }
 
 }

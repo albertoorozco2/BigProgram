@@ -1,37 +1,41 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * College of Computing Technology.
+ * Object Orientation with Design
+ * Teacher: Mark Morrissey
  */
 package bigprogram;
 
-
 /**
+ * BigProgram initializes the program and all the objects required .
+ * BigProgram initializes the program and all the objects required
+ * such as console, Deport Builder, DepotStorage, Company objects.
  *
- * @author A1
+ * @author Alberto Orozco
+ * @author Roberto Rivera
+ * @author Camila Silva
  */
 public class BigProgram {
-    
-  
+
     public static void main(String[] args) {
         Console console = new Console();
-        DepotBuilder depotBuilder = new DepotBuilder();
-        DepotStorage storage = new DepotStorage();
+        DepotBuilder depotBuilder = new DepotBuilder() {
+        };
+        DepotStorage depotStorage = new DepotStorage();
         Company companyA;
         Company companyB;
         Company companyC;
         CompaniesFacade CompaniesFacade;
         Boolean run;
 
-        do{ 
-         companyA = new Company(Type.A, depotBuilder, storage);
-         companyB = new Company(Type.B, depotBuilder, storage);
-         companyC = new Company(Type.C, depotBuilder, storage);
-         CompaniesFacade = new CompaniesFacade(companyA, companyB, companyC, console);
-        CompaniesFacade.treading();
-        run = console.returnToMain();
-        }while(run==true);
-            
+        do {
+            companyA = new Company(Type.A, depotBuilder, depotStorage);
+            companyB = new Company(Type.B, depotBuilder, depotStorage);
+            companyC = new Company(Type.C, depotBuilder, depotStorage);
+            CompaniesFacade = new CompaniesFacade(companyA, companyB, companyC, console);
+            CompaniesFacade.treading();
+            run = console.returnToMain();
+        } while (run == true);
+
     }
 
 }
