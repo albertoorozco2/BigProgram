@@ -8,8 +8,8 @@ package bigprogram;
 import java.util.Random;
 
 /**
- * CompaniesFacade is the class to perform and interact with all the Depots
- * in the Companies Iterators.
+ * CompaniesFacade is the class that performs and interacts with all the Depots,
+ * DepotsIterators, Companies, and Console.
  * CompaniesFacade coordinates all the transaction that are perform between the
  * the Depots of each company, in addition to Display information by using console.
  *

@@ -6,8 +6,8 @@
 package bigprogram;
 
 /**
- * DepotStorage is the class to hold and Depots in the array before send to Iterator.
- * DepotStorage is an object to hold and 100 Depots in the array before send to Iterator Object.
+ * DepotStorage is the class to hold a Depots array before these are sent to DepotIterator.
+ * DepotStorage is an object to hold an array of 100 Depots in the array before send to DepotIterator Object.
  *
  * @author Alberto Orozco
  * @author Roberto Rivera

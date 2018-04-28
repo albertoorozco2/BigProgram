@@ -8,7 +8,7 @@ package bigprogram;
 import java.util.Scanner;
 
 /**
- * Console is the class to hold a print and display data to the user.
+ * Console is the class that print and display, menu, data, reports headers to the user.
  * Console coordinates the printing and display of menu for the user to view,
  * and gather the input of the user to pass to the other objects.
  *
@@ -72,7 +72,7 @@ public class Console {
      * The transactionsCompletedHeader print on screen a formated header for the transaction report.
      * The transactionsCompletedHeader print on screen a formated header for the transaction report.
      *
-     * @param userType Type object to print header if user chose a type A, B , or C. 
+     * @param userType Type object to print header if user chose a type A, B , or C.
      */
     public void transactionsCompletedHeader(Type userType) {
         if (userType != Type.X) {
@@ -88,7 +88,7 @@ public class Console {
      * The tradeInformationHeader print on screen a formated header for the Trade Information report.
      * The tradeInformationHeader print on screen a formated header for the Trade Information report.
      *
-     * @param userType Type object to print header if user chose a type A, B , or C. 
+     * @param userType Type object to print header if user chose a type A, B , or C.
      */
     public void tradeInformationHeader(Type userType) {
 
@@ -137,7 +137,7 @@ public class Console {
      * The returnToMain print on screen a line to ask to the user for a input and wait for the to return to the main menu.
      * The returnToMain print on screen a line to ask to the user for a input and wait for the to return to the main menu.
      *
-     * @return  Boolean base on input of the user, if "EXIT" return false, any other return true.
+     * @return Boolean base on input of the user, if "EXIT" return false, any other return true.
      */
     public Boolean returnToMain() {
         System.out.println("\n\n\n\n\n\nType any key to return to the main Menu"

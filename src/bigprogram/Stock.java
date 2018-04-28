@@ -6,8 +6,8 @@
 package bigprogram;
 
 /**
- * Stock is the class to hold and keep track of specific the stock.
- * Stock is the class to hold and keep track of specific the stock.
+ * Stock is the class to hold and keep track of specific stock.
+ * Stock is the class to hold and keep track of specific stock.
  *
  * @author Alberto Orozco
  * @author Roberto Rivera

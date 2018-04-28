@@ -8,9 +8,9 @@ package bigprogram;
 import java.util.Random;
 
 /**
- * DepotBuilder is the class to build Depots by implementing the Builder Interface.
- * DepotBuilder is the class to build Depots by implementing the Builder Interface,
- * with the initialization all the required objects for a Depot such as .
+ * DepotBuilder is the class responsible to build Depots by implementing the Builder Interface.
+ * DepotBuilder is the class responsible to build Depots by implementing the Builder Interface,
+ * with the initialization all the required objects for a Depot such as Stock, and Allowance.
  * .
  *
  * @author Alberto Orozco

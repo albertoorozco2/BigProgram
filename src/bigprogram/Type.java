@@ -10,7 +10,7 @@ package bigprogram;
  * Type is the enum to hold allow types "A", "B", "C" and "X",
  * type A, B, C, are the allow companies name and Type,
  * and X it is used in case user does not select a specific company,
- * adnd decides to trade autonomously.
+ * and decides to trade autonomously.
  *
  * @author Alberto Orozco
  * @author Roberto Rivera

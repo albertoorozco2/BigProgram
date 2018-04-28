@@ -6,7 +6,7 @@
 package bigprogram;
 
 /**
- * Allowance is an object to keep track of the income, and expenses based on the allowance.
+ * Allowance is an object class to keep track of the income, and expenses of the transaction of each depot based on the initial allowance assigned.
  * Allowance is an object to keep track of the income, and expenses based on the allowance,
  * by keeping track of the sales, delivery sales, purchases, delivery purchases, and initial allowance.
  *

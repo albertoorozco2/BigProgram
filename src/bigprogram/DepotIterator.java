@@ -8,7 +8,7 @@ package bigprogram;
 import java.util.Iterator;
 
 /**
- * DepotIterator is the class to hold and keep track of Depot in the iterator.
+ * DepotIterator is the class to hold and keep track of Depot by implementing java util iterator.
  * DepotIterator is the class to hold and keep track of Depot in the iterator,
  * It hold a all the Depots in an Array of Depot and the position with a int variable.
  *

@@ -6,7 +6,7 @@
 package bigprogram;
 
 /**
- * Builder is the interface for the Depot Builder.
+ * Builder is the interface for the required methods to be implemented by any DepotBuilder.
  * Builder coordinates the methods that DepotBuilder will implements.
  *
  * @author Alberto Orozco

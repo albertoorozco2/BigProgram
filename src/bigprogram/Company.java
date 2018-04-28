@@ -6,7 +6,7 @@
 package bigprogram;
 
 /**
- * Company is the class to hold a DepotIterator with Depots.
+ * Company is the class that hold the DepotIterator, and get the total of transaction.
  * Company coordinates DepotIterator in order to perform transaction with each Depot
  * in order to perform need DepotBuilder and DepotStorage to put Depots in its Depot Iterator
  *
